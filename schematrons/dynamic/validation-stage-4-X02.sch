@@ -14,8 +14,8 @@
 		<assert id="BR-OPP-00112-0054" role="ERROR" diagnostics="OPP-112-Business" test="count(cac:Country/cbc:IdentificationCode) = 0 or (../../cbc:CompanyID)">rule|text|BR-OPP-00112-0054</assert>
 	</rule>
 	<rule context="/*/cac:BusinessParty/cac:PostalAddress[$noticeSubType = 'X02']">
-		<assert id="BR-BT-00507-0155" role="ERROR" diagnostics="BT-507-Business" test="count(cbc:CountrySubentityCode) &gt; 0 or not(cac:Country/cbc:IdentificationCode/normalize-space(text()) = ('ALB','AUT','BEL','BGR','CHE','CYP','CZE','DEU','DNK','ESP','EST','FIN','FRA','GBR','GRC','HRV','HUN','IRL','ISL','ITA','LIE','LTU','LUX','LVA','MKD','MLT','MNE','NLD','NOR','POL','PRT','ROU','SRB','SVK','SVN','SWE','TUR'))">rule|text|BR-BT-00507-0155</assert>
-		<assert id="BR-BT-00507-0204" role="ERROR" diagnostics="BT-507-Business" test="count(cbc:CountrySubentityCode) = 0 or (cac:Country/cbc:IdentificationCode/normalize-space(text()) = ('ALB','AUT','BEL','BGR','CHE','CYP','CZE','DEU','DNK','ESP','EST','FIN','FRA','GBR','GRC','HRV','HUN','IRL','ISL','ITA','LIE','LTU','LUX','LVA','MKD','MLT','MNE','NLD','NOR','POL','PRT','ROU','SRB','SVK','SVN','SWE','TUR'))">rule|text|BR-BT-00507-0204</assert>
+		<assert id="BR-BT-00507-0155" role="ERROR" diagnostics="BT-507-Business" test="count(cbc:CountrySubentityCode) &gt; 0 or not(cac:Country/cbc:IdentificationCode/normalize-space(text()) = ('ALB','AUT','BEL','BGR','CHE','CYP','CZE','DEU','DNK','ESP','EST','FIN','FRA','GRC','HRV','HUN','IRL','ISL','ITA','LIE','LTU','LUX','LVA','MKD','MLT','MNE','NLD','NOR','POL','PRT','ROU','SRB','SVK','SVN','SWE','TUR','XKX'))">rule|text|BR-BT-00507-0155</assert>
+		<assert id="BR-BT-00507-0204" role="ERROR" diagnostics="BT-507-Business" test="count(cbc:CountrySubentityCode) = 0 or (cac:Country/cbc:IdentificationCode/normalize-space(text()) = ('ALB','AUT','BEL','BGR','CHE','CYP','CZE','DEU','DNK','ESP','EST','FIN','FRA','GRC','HRV','HUN','IRL','ISL','ITA','LIE','LTU','LUX','LVA','MKD','MLT','MNE','NLD','NOR','POL','PRT','ROU','SRB','SVK','SVN','SWE','TUR','XKX'))">rule|text|BR-BT-00507-0204</assert>
 		<assert id="BR-BT-00510-0461" role="ERROR" diagnostics="BT-510_a_-Business" test="count(cbc:StreetName) = 0 or (cbc:CityName)">rule|text|BR-BT-00510-0461</assert>
 		<assert id="BR-BT-00510-0512" role="ERROR" diagnostics="BT-510_b_-Business" test="count(cbc:AdditionalStreetName) = 0 or (cbc:StreetName)">rule|text|BR-BT-00510-0512</assert>
 		<assert id="BR-BT-00510-0563" role="ERROR" diagnostics="BT-510_c_-Business" test="count(cac:AddressLine/cbc:Line) = 0 or (cbc:AdditionalStreetName)">rule|text|BR-BT-00510-0563</assert>
@@ -27,9 +27,11 @@
 		<assert id="BR-BT-00803-0002" role="ERROR" diagnostics="BT-803_t_-notice" test="count(efbc:TransmissionTime) &gt; 0 or not(efbc:TransmissionDate)">rule|text|BR-BT-00803-0002</assert>
 		<assert id="BR-BT-00803-0052" role="ERROR" diagnostics="BT-803_t_-notice" test="count(efbc:TransmissionTime) = 0 or (efbc:TransmissionDate)">rule|text|BR-BT-00803-0052</assert>
 	</rule>
+	<rule context="/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Changes[$noticeSubType = 'X02']">
+		<assert id="BR-BT-00140-0002" role="ERROR" diagnostics="ND-Changes_BT-140-notice" test="count(efac:ChangeReason/cbc:ReasonCode) &gt; 0 or not(efbc:ChangedNoticeIdentifier)">rule|text|BR-BT-00140-0002</assert>
+		<assert id="BR-BT-00140-0102" role="ERROR" diagnostics="ND-Changes_BT-140-notice" test="count(efac:ChangeReason/cbc:ReasonCode) = 0 or (efbc:ChangedNoticeIdentifier)">rule|text|BR-BT-00140-0102</assert>
+	</rule>
 	<rule context="/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Changes/efac:ChangeReason[$noticeSubType = 'X02']">
-		<assert id="BR-BT-00140-0002" role="ERROR" diagnostics="BT-140-notice" test="count(cbc:ReasonCode) &gt; 0 or not(../efbc:ChangedNoticeIdentifier)">rule|text|BR-BT-00140-0002</assert>
-		<assert id="BR-BT-00140-0102" role="ERROR" diagnostics="BT-140-notice" test="count(cbc:ReasonCode) = 0 or (../efbc:ChangedNoticeIdentifier)">rule|text|BR-BT-00140-0102</assert>
 		<assert id="BR-BT-00762-0002" role="ERROR" diagnostics="BT-762-notice" test="count(efbc:ReasonDescription) = 0 or (cbc:ReasonCode)">rule|text|BR-BT-00762-0002</assert>
 	</rule>
 </pattern>
